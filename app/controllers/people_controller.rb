@@ -35,6 +35,11 @@ class PeopleController < ApplicationController
     end
   end
 
+  def destroy
+    Person.find(params[:id]).destroy
+    redirect_to people_path
+  end
+
   private
     def people_params
       params.require(:person).permit(:first_name, :last_name, :age, :hair_color, :eye_color, :gender, :alive)
