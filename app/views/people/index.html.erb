@@ -3,4 +3,5 @@
 <% @people.each do |person| %>
   <h2><%= person.first_name %></h2>
   <%= link_to "Show Person", person_path(person) %>
+  <%= link_to 'Edit Person', edit_person_path(person) %>
 <% end %>

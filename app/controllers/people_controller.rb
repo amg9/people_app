@@ -11,9 +11,6 @@ class PeopleController < ApplicationController
     @person = Person.new
   end
 
-  def edit
-  end
-
   def create
     @person = Person.new(people_params)
 
@@ -24,9 +21,23 @@ class PeopleController < ApplicationController
     end
   end
 
+  def edit
+    @person = Person.find(params[:id])
+  end
+
+  def update
+    @person = Person.find(params[:id])
+
+    if @person.update(people_params)
+      redirect_to people_path
+    else
+      render :edit
+    end
+  end
+
   private
     def people_params
-      params.require(:person).permit(:title, :author, :body)
+      params.require(:person).permit(:first_name, :last_name, :age, :hair_color, :eye_color, :gender, :alive)
     end
 
 end
