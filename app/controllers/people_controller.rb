@@ -5,6 +5,7 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find(params[:id])
+    @notes = Note.where(person_id:[:id])
   end
 
   def new
